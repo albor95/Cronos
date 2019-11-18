@@ -13,7 +13,7 @@ class SequenciaController extends Controller
      */
     public function index()
     {
-        //
+        return view('elemento.index');
     }
 
     /**
@@ -43,9 +43,9 @@ class SequenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('elemento.listar');
     }
 
     /**

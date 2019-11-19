@@ -221,20 +221,25 @@
           </li>
           <li>
 
-            <a class="" href="widgets.html">
-
-            <a class="" href="relatorios.html">
+            <a href="javascript:;" class="">
                           <i class="icon_paperclip"></i>
                           <span>Relatórios</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
           </li>
-          <li>
-            <a class="" href="chart-chartjs.html">
-            <a class="" href="usuarios.html">
+          <li class="sub-menu">
+           
+            <a href="javascript:;" class="">
                           <i class="icon_profile"></i>
                           <span>Usuários</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
 
-                      </a>
+                      </a> 
+             <ul class="sub">
+              <li><a class="" href="{{url('/')}}/usuario/create">Adicionar Usuário</a></li>
+              <li><a class="" href="{{url('/')}}/usuario/edit">Editar Usuário</a></li>
+              <li><a class="" href="{{url('/')}}/usuario">Listar Usuários</a></li>
+            </ul>
 
           </li>
 

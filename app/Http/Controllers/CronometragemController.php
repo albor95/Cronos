@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 class CronometragemController extends Controller
 {
-    
+    protected $table = 'cronometragem';
 }

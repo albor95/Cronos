@@ -13,7 +13,8 @@ class OperacaoController extends Controller
      */
     public function index()
     {
-        return view('operacao.index');
+        $operacoes = \App\Operacao::get();
+        return view('operacao.index', compact('operacoes'));
     }
 
     /**
@@ -34,7 +35,10 @@ class OperacaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $operacao = new \App\Operacao();
+        $operacao->OpNom = $request->get('OpNom');
+        $operacao->save();
+        return 'true';
     }
 
     /**
@@ -56,7 +60,10 @@ class OperacaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operacao = new \App\Operacao();
+        $operacao->OpNom = $request->get('OpNom');
+        $operacao->save();
+        return 'true';
     }
 
     /**
@@ -68,7 +75,10 @@ class OperacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $operacao = \App\Operacao::find($id);
+        $operacao->OpNom = $request->get('OpNom');
+        $operacao->save();
+        return 'true';
     }
 
     /**
@@ -79,6 +89,8 @@ class OperacaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $operacao = \App\Operacao::find($id);
+        $operacao->delete();
+        return 'true';
     }
 }

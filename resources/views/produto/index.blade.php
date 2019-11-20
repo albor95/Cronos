@@ -161,48 +161,28 @@
                                             <th><i class="icon-task-l"></i>Operações</th>
                                             <th><i class="icon-task-l"></i>Ações</th>
                                         </tr>
+                                        @foreach ($produtos as $p)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Camisa Xadrez</td>
+                                            <td scope="row">{{$p->ProCod}}</td>
+                                            <td>{{$p->ProNom}}</td>
                                             <td>
                                                 <a id="btn_add_op" class="btn btn-primary" href="operacao"><i class="icon_plus_alt2"></i> Adicionar</a>
                                                 <a id="btn_lista_op" class="btn btn-secondary" onclick="abrirModal();"><i class=""></i> Listar</a>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="btn btn-secondary" href="#"><i class="icon_pencil-edit"></i> Editar</a>
-                                                    <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                                    <a class="btn btn-secondary" href="{{route('produto.edit', $p->ProCod)}}"><i class="icon_pencil-edit"></i> Editar</a>
+                                                    <a class="btn btn-danger" onclick="return delProduto('del{{$p->ProCod}}', '{{route('produto.destroy', $p->ProCod)}}');" href=""><i class="icon_close_alt2"></i></a>
+                                                    
+                                                    <form action="" method="post" id="del{{$p->ProCod}}}}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Cachecol Tri</td>
-                                            <td>
-                                                <a id="btn_add_op" class="btn btn-primary" href="operacao"><i class="icon_plus_alt2"></i> Adicionar</a>
-                                                <a id="btn_lista_op" class="btn btn-secondary" onclick="abrirModal();"><i class=""></i> Listar</a>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-secondary" href="#"><i class="icon_pencil-edit"></i> Editar</a>
-                                                    <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Calça Moletom</td>
-                                            <td>
-                                                <a id="btn_add_op" class="btn btn-primary" href="operacao"><i class="icon_plus_alt2"></i> Adicionar</a>
-                                                <a id="btn_lista_op" class="btn btn-secondary" onclick="abrirModal();"><i class=""></i> Listar</a>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-secondary" href="#"><i class="icon_pencil-edit"></i> Editar</a>
-                                                    <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     <a class="btn btn-success" href="#"><i class="icon_plus_alt2"></i> Adicionar Produto</a>
                                     </tbody>
                                 </table>
@@ -343,21 +323,24 @@
     <script src="js/jquery.slimscroll.min.js"></script>
 
     <script type='text/javascript'>
-                                            //knob
-                                            $(function () {
-                                                $(".knob").knob({
-                                                    'draw': function () {
-                                                        $(this.i).val(this.cv + '%')
-                                                    }
-                                                })
-                                            });
-                                            //custom select box
-                                            $(function () {
-                                                $('select.styled').customSelect();
-                                            });
-                                            function abrirModal() {
-                                                $('#modal_op').modal('show');
-                                            }
+        //knob
+        $(function () {
+            $(".knob").knob({
+                'draw': function () {
+                    $(this.i).val(this.cv + '%')
+                }
+            })
+        });
+        //custom select box
+        $(function () {
+            $('select.styled').customSelect();
+        });
+        function abrirModal() {
+            $('#modal_op').modal('show');
+        }
+        $(function (){
+            
+        });
     </script>
 
 </body>

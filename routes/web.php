@@ -3,7 +3,7 @@
 
 Route::get('/','indexController@index');
 Route::get('/cronometragem','CronometragemController@index');
-Route::get('/listar_elemento','SequenciaController@show');
+Route::get('/listar_elemento','SequenciaController@index');
 
 //rotas crud
 Route::resource('operacao','OperacaoController');

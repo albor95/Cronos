@@ -57,8 +57,10 @@ class ProdutoController extends Controller
 
     public function destroy($id)
     {
+        
         $produto = \App\Produto::find($id);
         $produto->delete();
         return 'true';
     }
+    
 }

@@ -1,6 +1,25 @@
 @extends('layout')
 @section('conteudo')
+<script>
 
+    function addUsuario(request){
+    dados = $('#' + request).serialize();
+    $.ajax({
+    method:'post',
+            data:dados,
+            dataType:'html',
+            success: function (data){
+            location.href='/usuario.index';
+            },
+            error:function (argument){
+            alert('erro ');
+            }
+    });  
+    
+    return false;
+    }
+
+</script>
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
@@ -17,7 +36,7 @@
               <div class="panel-body" style="color: black; outline-style: solid;  padding: 20px;">
                 <form class="form-horizontal " method="get">
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Nome</label>
+                    <label class="col-sm-2 control-label">Nome de Usuário</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" placeholder="Nome">
                     </div>
@@ -28,34 +47,21 @@
                       <input type="password" class="form-control" placeholder="Senha">
                     </div>
                   </div>
-                  
-                </form>
-             
-           <br><br>
-             
-                <form class="form-horizontal " method="get">
-                  <div class="form-group">
-                    <label class="control-label col-lg-2" for="inputSuccess">Tipo de Usuário</label>
-                    <div class="col-lg-10">
-                     
-
-                      <div class="radio">
-                        <label>
-                                                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                                  Option one is this and that&mdash;be sure to include why it's great
-                                              </label>
-                      </div>
-                      <div class="radio">
-                        <label>
-                                                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                                  Option two can be something else and selecting it will deselect option one
-                                              </label>
-                      </div>
-
+                    <div class="form-group">
+                    <label class="col-sm-2 control-label">Nome Completo</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Nome Completo">
+                    </div>
+                  </div>
+                      <div class="form-group">
+                    <label class="col-sm-2 control-label">Tipo de Usuário</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Tipo de Usuário">
                     </div>
                   </div>
                   
                 </form>
+          
               </div>
             </section>
           </div>
@@ -63,7 +69,7 @@
        
         <!-- page end-->
       </section> 
-        <button class="btn btn-success" style=" width: 200px; margin-left: 450px" type="submit">Adicionar</button>
+        <a onclick="return addUsuario('{{route('usuario.store')}}')" class="btn btn-success" style=" width: 200px; margin-left: 450px" type="submit">Adicionar</a>
     </section>
     <!--main content end-->
     

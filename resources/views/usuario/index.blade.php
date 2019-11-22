@@ -1,6 +1,31 @@
 @extends('layout')
 @section('conteudo')
 
+<script>
+
+    function delUsuario(id, url){
+    confirma=confirm("keh memu faze issu?");
+    if(confirma){
+    $.noConflict();
+    dados = $('#' + id).serialize();
+    
+    $.ajax({
+    method:'post',
+            url:url,
+            data:dados,
+            dataType:'html',
+            success: function (data){
+            $('#linha'+id).remove();
+            },
+            error:function (argument){
+            alert('Usuário ta la ainda ');
+            }
+    });  
+    }
+    return false;
+    }
+
+</script>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -30,24 +55,24 @@
                                 <th><i class="icon_cogs"></i> Ação</th>
                             </tr>
                             @foreach($usuarios as $u)
-                            <tr>
+                            <tr id="linhadel{{$u->UsuCod}}">
                                 <td>{{$u->UsuCod}}</td>
                                 <td>{{$u->UsuName}}</td>
                                 <td>{{$u->UsuTip}}</td>
                                 <td>{{$u->UsuNom}}</td>
                                 <td>
-                        <div class="btn-group">
-                            <a href="{{route('usuario.edit', $u->UsuCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                            <a href="" onclick="return delUsuario('del{{$u->UsuCod}}','{{route('usuario.destroy', $u->UsuCod)}}')"class="btn btn-danger"><i class="icon_close_alt2"></i> Deletar</a>
+                                    <div class="btn-group">
+                                        <a href="{{route('usuario.edit', $u->UsuCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
+                                        <a href="" onclick="return delUsuario('del{{$u->UsuCod}}','{{route('usuario.destroy', $u->UsuCod)}}')"class="btn btn-danger"><i class="icon_close_alt2"></i> Deletar</a>
 
-                            <form action="" method="post" id="del{{$u->UsuCod}}">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </div>
+                                        <form action="" method="post" id="del{{$u->UsuCod}}">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </div>
                                 </td>
-                        </tr>
-                        @endforeach
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </section>

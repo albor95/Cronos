@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
+    public $timestamps = false;
     protected $table='usuario';
     protected $primaryKey='UsuCod';
-    protected $nome='UsuNom';
-    protected $tipo='UsuTip';
+  
    
 }

@@ -50,11 +50,10 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario=\App\Usuario::find($id);
-        $usuario->UsuName= $request->get('UsuName');
-        $usuario->UsuSen= $request->get('UsuSen');
-        $usuario->UsuNom= $request->get('UsuNom');
-        $usuario->UsuTip= $request->get('UsuTip');
-        $usuario->save;
+        $usuario->UsuName = $request->get('UsuName');
+        $usuario->UsuNom = $request->get('UsuNom');
+        $usuario->UsuTip = $request->get('UsuTip');
+        $usuario->save();
         return"true";
     }
 

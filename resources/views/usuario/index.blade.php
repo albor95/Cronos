@@ -50,16 +50,16 @@
                             <tr>
                                 <th><i class="icon_pin"></i> Cod.</th>
                                 <th><i class="icon_profile"></i> Nome de Usuário</th>
-                                <th><i class="icon_question"></i> Tipo</th>
                                 <th><i class="icon_question"></i> Nome Completo</th>
+                                <th><i class="icon_question"></i> Tipo</th>
                                 <th><i class="icon_cogs"></i> Ação</th>
                             </tr>
                             @foreach($usuarios as $u)
                             <tr id="linhadel{{$u->UsuCod}}">
                                 <td>{{$u->UsuCod}}</td>
                                 <td>{{$u->UsuName}}</td>
+                                <td>{{$u->UsuNom}}</td>  
                                 <td>{{$u->UsuTip}}</td>
-                                <td>{{$u->UsuNom}}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{route('usuario.edit', $u->UsuCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>

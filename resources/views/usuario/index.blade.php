@@ -63,7 +63,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <a href="{{route('usuario.edit', $u->UsuCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                                        <a href="" onclick="return delUsuario('del{{$u->UsuCod}}','{{route('usuario.destroy', $u->UsuCod)}}')"class="btn btn-danger"><i class="icon_close_alt2"></i> Deletar</a>
+                                        <a onclick="return delUsuario('del{{$u->UsuCod}}','{{route('usuario.destroy', $u->UsuCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
 
                                         <form action="" method="post" id="del{{$u->UsuCod}}">
                                             @csrf

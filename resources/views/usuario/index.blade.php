@@ -50,7 +50,7 @@
                             <tr>
                                 <th><i class="icon_pin"></i> Cod.</th>
                                 <th><i class="icon_profile"></i> Nome de Usuário</th>
-                                <th><i class="icon_question"></i> Nome Completo</th>
+                                <th><i class="icon_id-2"></i> Nome Completo</th>
                                 <th><i class="icon_question"></i> Tipo</th>
                                 <th><i class="icon_cogs"></i> Ação</th>
                             </tr>

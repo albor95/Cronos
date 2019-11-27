@@ -47,22 +47,21 @@
                     <div class="form-group ">
                       <label for="UsuName" class="control-label col-lg-2">Nome de Usuário <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="UsuName" name="UsuName" type="text" value="{{$usuario->UsuName}}" />
-                             
+                        <input class=" form-control" id="UsuName" name="UsuName" type="text" pattern="[a-z\s]+$" required name=UsuName value="{{$usuario->UsuName}}" />
                       </div>
                     </div>
                     
                      <div class="form-group ">
                       <label for="UsuNom" class="control-label col-lg-2">Nome Completo <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="UsuNom" name="UsuNom" type="text" value="{{$usuario->UsuNom}}" />
+                        <input class=" form-control" id="UsuNom" name="UsuNom" type="text" required name=UsuNom value="{{$usuario->UsuNom}}" />
                       </div>
                     </div>
                     
                     <div class="form-group ">
                       <label for="UsuTip" class="control-label col-lg-2">Tipo de Usuário <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="UsuTip" name="UsuTip" type="text" value="{{$usuario->UsuTip}}" />
+                        <input class=" form-control" id="UsuTip" name="UsuTip" type="text" max-length="1" pattern="[A,P]+$"  required name=UsuTip title="Apenas A ou P" value="{{$usuario->UsuTip}}" />
                       </div>
                     </div>
                        

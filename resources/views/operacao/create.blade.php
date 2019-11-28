@@ -45,6 +45,8 @@
                                     <input type="text" id="OpNom" name="OpNom" class="form-control" required name=OpNom  placeholder="Nome">
                                 </div>
                             </div>
+                            
+                            
                             <div class="form-group">
                                 <label for="OpMaq" class="col-sm-2 control-label">Máquina</label>
                                 <div class="col-sm-10">

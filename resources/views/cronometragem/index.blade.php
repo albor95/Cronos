@@ -3,7 +3,7 @@
 
 <script>
 
-    function delOperacao(id, url){
+    function delProduto(id, url){
     confirma=confirm("keh memu faze issu?");
     if(confirma){
     $.noConflict();
@@ -16,10 +16,9 @@
             dataType:'html',
             success: function (data){
             $('#linha'+id).remove();
-            location.href= '/operacao';
             },
             error:function (argument){
-            alert('Erro');
+            alert('Usuário ta la ainda ');
             }
     });  
     }
@@ -32,7 +31,7 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-table"></i>Lista de Operações</h3>
+                <h3 class="page-header"><i class="fa fa-table"></i>Lista de Produtos</h3>
                 <ol class="breadcrumb">
                     
 
@@ -50,23 +49,28 @@
 
                             <tr>
                                 <th><i class="icon_pin"></i> Cod.</th>
-                                <th><i class="icon_document"></i> Nome da Operação</th>
-                                <th><i class="icon_cog"></i> Máquina</th>
-                                <th><i class="icon_profile"></i> Cronometrista</th>
+                                <th><i class="icon_tool"></i> Cronometristra</th>
+                                <th><i class="icon_cogs"></i> Tempo</th>
+                                 <th><i class="icon_cogs"></i> TomadaTempo</th>
+                                  <th><i class="icon_cogs"></i> Produto</th>
+                                   <th><i class="icon_cogs"></i> Operação</th>
                             </tr>
-                            @foreach($operacao as $o)
-                            <tr id="linhade{{$o->OpCod}}">
-                                <td>{{$o->OpCod}}</td>
-                                <td>{{$o->OpNom}}</td>
-                                <td>{{$o->ProCod}}</td>
-                                <td>{{$o->OpMaq}}</td>  
-                                <td>{{$o->OpCron}}</td>
+                            @foreach($cronometragem as $c)
+                            <tr id="linhadel{{$c->CroCod}}">
+                                 <td>{{$c->CroCod}}</td>  
+                                <td>{{$c->CroCronNom}}</td>  
+                                 <td>{{$c->TomCod}}</td>  
+                                  <td>{{$c->Tomada_Tempo_OpCod}}</td> 
+                                  <td>{{$c->ProCod}}</td> 
+                                  <td>{{$c->OpCod}}</td> 
+                                 
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{route('operacao.edit', $o->OpCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                                        <a onclick="return delOperacao('del{{$o->OpCod}}','{{route('operacao.destroy', $o->OpCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
+                                        
+                                        <a href="{{route('produto.edit', $p->ProCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
+                                        <a onclick="return delProduto('del{{$p->ProCod}}','{{route('produto.destroy', $p->ProCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
 
-                                        <form action="" method="post" id="del{{$o->OpCod}}">
+                                        <form action="" method="post" id="del{{$p->ProCod}}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

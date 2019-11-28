@@ -56,9 +56,11 @@
                             <tr id="linhadel{{$p->ProCod}}">
                                  <td>{{$p->ProCod}}</td>  
                                 <td>{{$p->ProNom}}</td>  
-                               
+                                <td><a href="{{url('/')}}/operacao/create" class="btn btn-primary">Operações</a><a href="{{url('/')}}/operacao" class="btn btn-primary">Listar Ops.</a></td>
+                                
                                 <td>
                                     <div class="btn-group">
+                                        
                                         <a href="{{route('produto.edit', $p->ProCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
                                         <a onclick="return delProduto('del{{$p->ProCod}}','{{route('produto.destroy', $p->ProCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
 

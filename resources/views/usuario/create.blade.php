@@ -11,7 +11,7 @@
             url: url,
             dataType: 'html',
             success: function (data) {
-                location.href = '';
+                location.href = '/usuario';
             },
             error: function (argument) {
                 alert('erro ');
@@ -40,9 +40,6 @@
                     <div class="panel-body" style="color: black; outline-style: solid;  padding: 20px;">
                         <form id="AddForm" name="AddForm" class="form-horizontal" onsubmit="return addUsuario('{{ route('usuario.store')}}')">
                             @csrf
-
-
-
 
                             <div class="form-group">
                                 <label for="UsuName" class="col-sm-2 control-label">Nome de Usuário</label>

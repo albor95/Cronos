@@ -90,9 +90,9 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="adicionar_operacao.html">Adicionar Operações</a></li>
+              <li><a class="" href="{{url('/')}}/operacao/create">Adicionar Operações</a></li>
               <li><a class="" href="adicionar_elementos.html">Adicionar Elementos</a></li>
-              <li><a class="" href="listar_ops-elementos.html">Listar Op's e Elementos</a></li>
+              <li><a class="" href="{{url('/')}}/operacao">Listar Op's e Elementos</a></li>
             </ul>
           </li>
           <li>

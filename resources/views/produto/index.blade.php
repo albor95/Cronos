@@ -52,7 +52,7 @@
                                 <th><i class="icon_tool"></i> Produto</th>
                                 <th><i class="icon_cogs"></i> Ação</th>
                             </tr>
-                            @foreach($peodutos as $p)
+                            @foreach($produtos as $p)
                             <tr id="linhadel{{$p->ProCod}}">
                                  <td>{{$p->ProCod}}</td>  
                                 <td>{{$p->ProNom}}</td>  

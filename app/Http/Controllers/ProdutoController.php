@@ -10,7 +10,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos= \App\Produto::get();
-        return view('produto.index', compact($produtos));
+        return view('produto.index', compact('produtos'));
     }
 
    
@@ -44,8 +44,8 @@ class ProdutoController extends Controller
     public function update(Request $request, $id)
     {
         $produto=\App\Produto::find($id);
-        $Produto->PronNom=$request->get('ProNom');
-        $produto->save;
+        $produto->ProNom= $request->get('ProNom');
+        $produto->save();
         return"true";
     }
 

@@ -1,37 +1,32 @@
 @extends('layout')
 @section('conteudo')
-
-<script>
-
-    function delProduto(id, url){
-    confirma=confirm("keh memu faze issu?");
-    if(confirma){
-    $.noConflict();
-    dados = $('#' + id).serialize();
-    
-    $.ajax({
-    method:'post',
-            url:url,
-            data:dados,
-            dataType:'html',
-            success: function (data){
-            $('#linha'+id).remove();
-            },
-            error:function (argument){
-            alert('Usuário ta la ainda ');
-            }
-    });  
-    }
-    return false;
-    }
-
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <head>
+        <title>Cronómetro</title> 
+        
+        
+        
+        <style type="text/css">
+            * { margin: auto; padding: 0; }
+            h1 { padding: 0.5em; text-align: center; }
+            #cronometro { padding:10px; border: 1px black double; width: 200px;
+                          text-align: center }
+            #reloj {  border: 1px solid black; 
+                     font: bold 1.5em digital, europa, arial; text-align: center; 
+                     }
+            #cronometro [type=button]  { margin: 4px; font: normal 9pt arial } 
+        </style>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/cronometro.js" type="text/javascript"></script>
+        
+    </head>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-table"></i>Lista de Produtos</h3>
+                <h3 class="page-header"><i class="fa fa-table"></i>Cronometragem</h3>
                 <ol class="breadcrumb">
                     
 
@@ -39,7 +34,37 @@
             </div>
         </div>
         <!-- page start-->
-
+<body>
+        <h1>CRONOMETRO com Javascript</h1>
+        <div id="cronometro">
+            <div id="reloj">00 : 00 : 00</div>
+            <form name="cron" action="#">
+                <input type="button" value="Iniciar" name="empieza" />
+                <input type="button" value="Parar" name="para" /><br/>
+                <input type="button" value="Continuar" name="continua" />
+                <input type="button" value="Reiniciar" name="reinicia" />
+                 <input type="button" value="Proximo" name="proximo" />
+            </form>
+        </div>
+        
+        </br></br>
+    
+    <table width="60%" border="1">
+        <thead>
+            <tr>
+                <td>N° Cronômetro</td>
+                <td>Elemento</td>
+                <td>Tempo</td>
+            </tr>
+        </thead>
+        
+        <tbody id="corpoTabela"></tbody>
+        
+        
+    </table>
+        
+    </body>
+        <br><br>
         <div class="row">
             <div class="col-lg-12">
                 <section class="panel">
@@ -63,19 +88,7 @@
                                   <td>{{$c->Tomada_Tempo_OpCod}}</td> 
                                   <td>{{$c->ProCod}}</td> 
                                   <td>{{$c->OpCod}}</td> 
-                                 
-                                <td>
-                                    <div class="btn-group">
-                                        
-                                        <a href="{{route('produto.edit', $p->ProCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                                        <a onclick="return delProduto('del{{$p->ProCod}}','{{route('produto.destroy', $p->ProCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
-
-                                        <form action="" method="post" id="del{{$p->ProCod}}">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </div>
-                                </td>
+                            
                             </tr>
                             @endforeach
                         </tbody>

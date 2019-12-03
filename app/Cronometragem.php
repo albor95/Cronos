@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cronometragem extends Model
 {
-     //public $timestamps = false;
+     public $timestamps = false;
      protected $table='cronometragem';
       protected $primaryKey='CroCod';
 }

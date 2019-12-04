@@ -7,6 +7,9 @@ window.onload = function () {
     document.cron.continua.onclick = continuar;
     document.cron.reinicia.onclick = reiniciar;
     document.cron.proximo.onclick = capturarTempo;
+
+    getTomadaTempo(1);
+    getElementos(1);
 }
 //variables de inicio:
 var marcha = 0; //control del temporizador
@@ -75,8 +78,14 @@ function reiniciar() {
 }
 
 var contador = 0;
-
+var contadorElemento = 0;
 function capturarTempo() {
+
+    if (contadorElemento == elementos.length)
+    {
+        contadorElemento = 0;
+    }
+
     contador++;
     parar();
     tempoCapturado = $('#reloj').html();
@@ -84,20 +93,49 @@ function capturarTempo() {
     empezar();
 
 
+    elemento = elementos[contadorElemento];
 
-    elemento = "Elemento de teste";
     linha = "<tr>\n\
-                        <td>" + contador + "</td>\n\
-                        <td>" + elemento + "</td>\n\
-                        <td>" + tempoCapturado + "</td>\n\
-                        </tr>";
+      <td>" + contador + "</td>\n\
+      <td>" + elemento.SeqNom + "</td>\n\
+      <td>" + tempoCapturado + "</td>\n\
+      </tr>";
 
     //Plota na tabela
     $('#corpoTabela').append(linha);
 
     //Envia via AJAX
+
     console.log("Cronometro " + contador + " tempo: " + tempoCapturado);
+    registrarTempo(contador, tomadaTempo.TomCod, elemento.SeqCod, tempoCapturado)
+    contadorElemento++;
+
+    //para cronometro
+    if (contador >= (elementos.length * tomadaTempo.TomNumLei)) {
+        parar();
+        $('#proximo').attr('disabled', 'true');
+    }
 }
+
+
+function registrarTempo(NumLeitura, CodTomada, CodElemento, Tempo) {
+
+    $.ajax({
+        method: 'get',
+        data: 'TomNumLei=' + NumLeitura + '&TomCod=' + CodTomada + '&TomEle=' + CodElemento + '&CroTem=' + Tempo,
+        url: '/cronometragem/guardar',
+        dataType: 'json',
+        success: function (data) {
+            console.log('deu certo isso-> ' + NumLeitura);
+        },
+        error: function (argument) {
+            alert('erro ');
+        }
+    });
+
+}
+
+
 var tomadaTempo = null;
 function getTomadaTempo(codTomadaTempo)
 {
@@ -115,7 +153,7 @@ function getTomadaTempo(codTomadaTempo)
     });
 }
 
-var elementos = null;
+var elementos = [];
 function getElementos(codOperacao)
 {
     $.ajax({

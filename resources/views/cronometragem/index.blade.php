@@ -43,7 +43,7 @@
                 <input type="button" value="Parar" name="para" /><br/>
                 <input type="button" value="Continuar" name="continua" />
                 <input type="button" value="Reiniciar" name="reinicia" />
-                 <input type="button" value="Proximo" name="proximo" />
+                <input type="button" value="Proximo" id="proximo" name="proximo" />
             </form>
         </div>
         

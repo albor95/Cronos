@@ -34,10 +34,10 @@ class CronometragemController extends Controller
     public function guardar(Request $request) {
         
         $cronometragem= \App\TomadaTempo();
-        $cronometragem->TomNumLei=$request->get('TomNumLei');
-        $cronometragem->TomCod=$request->get('TomCod');
-        $cronometragem->TomEle=$request->get('TomEle');
-        $tempo=$request->get('CroTem');
+        $cronometragem->TomNumLei=$_GET['TomNumLei'];
+        $cronometragem->TomCod=$_GET['TomCod'];
+        $cronometragem->TomEle=$_GET['TomEle'];
+        $tempo=$_GET['CroTem'];
         $tempo= str_replace(' ', '',$tempo);
         $cronometragem->save();
         return true;

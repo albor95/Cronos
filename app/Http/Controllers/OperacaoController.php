@@ -23,10 +23,11 @@ class OperacaoController extends Controller
     public function store(Request $request)
     {
         $operacao=new\App\Operacao();
-        $operacao->OpNom= $request->get('OpNom');
-        //$operacao->ProCod= $request->get('ProCod');
-        $operacao->OpMaq= $request->get('OpMaq');
-        $operacao->OpCron= $request->get('OpCron');
+        $operacao->OpeNom= $request->get('OpeNom');
+        $operacao->ProCod= $request->get('ProCod');
+        $operacao->OpeMaq= $request->get('OpeMaq');
+        $operacao->OpeTipEst= $request->get('OpeTipEst');
+        $operacao->OpeCro= $request->get('OpeCro');
         $operacao->save();
         return "true";
     }
@@ -48,10 +49,10 @@ class OperacaoController extends Controller
     public function update(Request $request, $id)
     {
         $operacao=\App\Operacao::find($id);
-        $operacao->OpNom= $request->get('OpNom');
-        //$operacao->ProCod= $request->get('ProCod');
-        $operacao->OpMaq= $request->get('OpMaq');
-        $operacao->OpCron= $request->get('OpCron');
+        $operacao->OpeNom= $request->get('OpeNom');
+        $operacao->OpeMaq= $request->get('OpeMaq');
+        $operacao->OpeTipEst= $request->get('OpeTipEst');
+        $operacao->OpeCro= $request->get('OpeCro');
         $operacao->save();
         return "true";
     }
@@ -61,5 +62,6 @@ class OperacaoController extends Controller
     {
         $operacao=\App\Operacao::find($id);
         $operacao->delete();
+        echo($id);
     }
 }

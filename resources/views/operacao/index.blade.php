@@ -4,22 +4,21 @@
 <script>
 
     function delOperacao(id, url){
-    confirma=confirm("keh memu faze issu?");
+    confirma=confirm("Tem certeza de que deseja deletar a operação?");
     if(confirma){
     $.noConflict();
     dados = $('#' + id).serialize();
     
     $.ajax({
-    method:'post',
+    method:'get',
             url:url,
             data:dados,
             dataType:'html',
             success: function (data){
-            $('#linha'+id).remove();
-            location.href= '/operacao';
+            $('#'+id).remove();
             },
             error:function (argument){
-            alert('Erro');
+            alert('Erro ao excluir a operação!');
             }
     });  
     }
@@ -51,22 +50,25 @@
                             <tr>
                                 <th><i class="icon_pin"></i> Cod.</th>
                                 <th><i class="icon_document"></i> Nome da Operação</th>
+                                <th><i class="icon_document"></i> Produto</th>
                                 <th><i class="icon_cog"></i> Máquina</th>
+                                <th><i class="icon_cog"></i> Tipo</th>
                                 <th><i class="icon_profile"></i> Cronometrista</th>
                             </tr>
                             @foreach($operacao as $o)
-                            <tr id="linhade{{$o->OpCod}}">
-                                <td>{{$o->OpCod}}</td>
-                                <td>{{$o->OpNom}}</td>
+                            <tr id="linhadel{{$o->OpeCod}}">
+                                <td>{{$o->OpeCod}}</td>
+                                <td>{{$o->OpeNom}}</td>
                                 <td>{{$o->ProCod}}</td>
-                                <td>{{$o->OpMaq}}</td>  
-                                <td>{{$o->OpCron}}</td>
+                                <td>{{$o->OpeMaq}}</td>
+                                <td>{{$o->OpeTipEst}}</td>
+                                <td>{{$o->OpeCro}}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{route('operacao.edit', $o->OpCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                                        <a onclick="return delOperacao('del{{$o->OpCod}}','{{route('operacao.destroy', $o->OpCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
+                                        <a href="{{route('operacao.edit', $o->OpeCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
+                                        <a onclick="return delOperacao('linhadel{{$o->OpeCod}}','{{route('operacao.destroy', $o->OpeCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
 
-                                        <form action="" method="post" id="del{{$o->OpCod}}">
+                                        <form action="" method="post" id="del{{$o->OpeCod}}">
                                             @csrf
                                             @method('DELETE')
                                         </form>

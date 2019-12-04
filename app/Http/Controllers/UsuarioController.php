@@ -24,10 +24,8 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $usuario=new\App\Usuario();
-        $usuario->UsuName= $request->get('UsuName');
-        $usuario->UsuSen= $request->get('UsuSen');
         $usuario->UsuNom= $request->get('UsuNom');
-        $usuario->UsuTip= $request->get('UsuTip');
+        $usuario->UsuSen= $request->get('UsuSen');
         $usuario->save();
         return "true";
     }
@@ -50,9 +48,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario=\App\Usuario::find($id);
-        $usuario->UsuName = $request->get('UsuName');
         $usuario->UsuNom = $request->get('UsuNom');
-        $usuario->UsuTip = $request->get('UsuTip');
         $usuario->save();
         return"true";
     }

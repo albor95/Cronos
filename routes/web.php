@@ -12,7 +12,7 @@ Route::get('/cronometragem/guardar','CronometragemController@guardar');
 Route::resource('operacao','OperacaoController');
 Route::resource('usuario','UsuarioController');
 Route::resource('produto','ProdutoController');
-Route::resource('sequencia','SequenciaController');
+Route::resource('elemento','ElementoController');
 Route::resource('tomada-Tempo','TomadaTempoController');
 
 

@@ -14,7 +14,7 @@
             location.href = '/operacao';
             },
             error: function (argument) {
-            alert('erro ');
+            alert('Erro');
             }
     });
     return false;
@@ -40,24 +40,37 @@
                         <form id="AddFormOp" name="AddFormOp" class="form-horizontal" onsubmit="return addOperacao('{{ route('operacao.store')}}')">
                             @csrf
                             <div class="form-group">
-                                <label for="OpNom" class="col-sm-2 control-label">Nome da Operação</label>
+                                <label for="ProCod" class="col-sm-2 control-label">Produto</label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="OpNom" name="OpNom" class="form-control" required name=OpNom  placeholder="Nome">
+                                    <input type="number" id="ProCod" name="ProCod" class="form-control" required name=ProCod  placeholder="Código do Produto">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="OpeNom" class="col-sm-2 control-label">Nome da Operação</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="OpeNom" name="OpeNom" class="form-control" required name=OpeNom  placeholder="Nome">
                                 </div>
                             </div>
                             
                             
                             <div class="form-group">
-                                <label for="OpMaq" class="col-sm-2 control-label">Máquina</label>
+                                <label for="OpeMaq" class="col-sm-2 control-label">Máquina</label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="OpMaq" name="OpMaq" class="form-control" required name=OpMaq placeholder="Ritmo">
+                                    <input type="text" id="OpeMaq" name="OpeMaq" class="form-control" required name=OpeMaq placeholder="Ritmo">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="OpeTipEst" class="col-sm-2 control-label">TipEst</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="OpeTipEst" name="OpeTipEst" class="form-control" required name=OpeTipEst placeholder="TipEst">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="OpCron" class="col-lg-2 control-label">Cronometrista</label>
+                                <label for="OpeCro" class="col-lg-2 control-label">Cronometrista</label>
                                 <div class="col-lg-10">
-                                    <input type="text" id="OpCron" name="OpCron" class="form-control"  required name=OpCron placeholder="Cronometrista">
+                                    <input type="text" id="OpeCro" name="OpeCro" class="form-control"  required name=OpeCro placeholder="Cronometrista">
                                 </div>
                             </div>
 

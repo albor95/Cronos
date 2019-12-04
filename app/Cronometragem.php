@@ -8,5 +8,4 @@ class Cronometragem extends Model
 {
      public $timestamps = false;
      protected $table='cronometragem';
-      protected $primaryKey='CroCod';
 }

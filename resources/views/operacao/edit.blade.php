@@ -41,27 +41,34 @@
              <div style="color: black; outline-style: solid;  padding: 20px;" class="panel-body">
                 <div class="form" >
                       
-                    <form class="form-validate form-horizontal" action="" id="OpForm" onsubmit="return edOperacao('{{ route('operacao.update', $operacao->OpCod)}}')">
+                    <form class="form-validate form-horizontal" action="" id="OpForm" onsubmit="return edOperacao('{{ route('operacao.update', $operacao->OpeCod)}}')">
                     @csrf
                     @method('patch')
                     <div class="form-group ">
-                      <label for="OpNom" class="control-label col-lg-2">Nome da Operação <span class="required">*</span></label>
+                      <label for="OpeNom" class="control-label col-lg-2">Nome da Operação <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="OpNom" name="OpNom" type="text" required name=OpNom value="{{$operacao->OpNom}}" />
+                        <input class=" form-control" id="OpeNom" name="OpeNom" type="text" required name=OpeNom value="{{$operacao->OpeNom}}" />
                       </div>
                     </div>
                     
                      <div class="form-group ">
-                      <label for="OpMaq" class="control-label col-lg-2">Máquina <span class="required">*</span></label>
+                      <label for="OpeMaq" class="control-label col-lg-2">Máquina <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="OpMaq" name="OpMaq" type="text" required name=OpMaq value="{{$operacao->OpMaq}}" />
+                        <input class=" form-control" id="OpeMaq" name="OpeMaq" type="text" required name=OpeMaq value="{{$operacao->OpeMaq}}" />
                       </div>
                     </div>
                     
                     <div class="form-group ">
-                      <label for="OpCron" class="control-label col-lg-2">Cronometrista<span class="required">*</span></label>
+                      <label for="OpeEstTip" class="control-label col-lg-2">TipEst <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="OpCron" name="OpCron" type="text" required name=OpCron  value="{{$operacao->OpCron}}" />
+                        <input class=" form-control" id="OpeEstTip" name="OpeEstTip" type="text" required name=OpeEstTip value="{{$operacao->OpeEstTip}}" />
+                      </div>
+                    </div>
+                    
+                    <div class="form-group ">
+                      <label for="OpeCro" class="control-label col-lg-2">Cronometrista<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="OpeCro" name="OpeCro" type="text" required name=OpeCro  value="{{$operacao->OpeCro}}" />
                       </div>
                     </div>
                        

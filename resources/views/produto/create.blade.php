@@ -5,7 +5,7 @@
     function addProduto(url) {
         dados = $('#AddForm').serialize();
         $.noConflict();
-        $.ajax({
+        JQuery.ajax({
             method: 'post',
             data: dados,
             url: url,

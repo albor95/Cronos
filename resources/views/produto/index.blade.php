@@ -4,21 +4,21 @@
 <script>
 
     function delProduto(id, url){
-    confirma=confirm("keh memu faze issu?");
+    confirma=confirm("Tem certeza de que deseja excluir o Produto?");
     if(confirma){
     $.noConflict();
     dados = $('#' + id).serialize();
     
     $.ajax({
-    method:'post',
+    method:'get',
             url:url,
             data:dados,
             dataType:'html',
             success: function (data){
-            $('#linha'+id).remove();
+            $('#'+id).remove();
             },
             error:function (argument){
-            alert('Usuário ta la ainda ');
+            alert('Erro ao excluir o Produto!');
             }
     });  
     }
@@ -54,7 +54,7 @@
                             </tr>
                             @foreach($produtos as $p)
                             <tr id="linhadel{{$p->ProCod}}">
-                                 <td>{{$p->ProCod}}</td>  
+                                <td>{{$p->ProCod}}</td>  
                                 <td>{{$p->ProNom}}</td>  
                                 <td><a href="{{url('/')}}/operacao/create" class="btn btn-primary">Operações</a><a href="{{url('/')}}/operacao" class="btn btn-primary">Listar Ops.</a></td>
                                 
@@ -62,7 +62,7 @@
                                     <div class="btn-group">
                                         
                                         <a href="{{route('produto.edit', $p->ProCod)}}" class="btn btn-primary"><i class="icon_pencil-edit"></i> Editar</a>
-                                        <a onclick="return delProduto('del{{$p->ProCod}}','{{route('produto.destroy', $p->ProCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
+                                        <a onclick="return delProduto('linhadel{{$p->ProCod}}','{{route('produto.destroy', $p->ProCod)}}')"class="btn btn-danger"><i class="icon_close_alt2" ></i> Deletar</a>
 
                                         <form action="" method="post" id="del{{$p->ProCod}}">
                                             @csrf

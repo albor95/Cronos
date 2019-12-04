@@ -8,5 +8,5 @@ class Operacao extends Model
 {
      public $timestamps = false;
      protected $table='operacao';
-     protected $primaryKey='OpCod';
+     protected $primaryKey='OpeCod';
 }

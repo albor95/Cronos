@@ -91,8 +91,18 @@
                       </a>
             <ul class="sub">
               <li><a class="" href="{{url('/')}}/operacao/create">Adicionar Operações</a></li>
-              <li><a class="" href="adicionar_elementos.html">Adicionar Elementos</a></li>
-              <li><a class="" href="{{url('/')}}/operacao">Listar Op's e Elementos</a></li>
+              <li><a class="" href="{{url('/')}}/operacao">Listar Operações</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;" class="">
+                          <i class="icon_clock"></i>
+                          <span>Elementos</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+            <ul class="sub">
+              <li><a class="" href="/elemento/create">Adicionar Elementos</a></li>
+              <li><a class="" href="{{url('/')}}/elemento">Listar Elementos</a></li>
             </ul>
           </li>
           <li>

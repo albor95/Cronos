@@ -1,0 +1,258 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 04-Dez-2019 às 00:35
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `bd_cronometragem`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cronometragem`
+--
+
+CREATE TABLE `cronometragem` (
+  `CroNroLei` int(11) NOT NULL,
+  `TomCod` int(11) NOT NULL,
+  `EleCod` int(11) NOT NULL,
+  `CroTem` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `elemento`
+--
+
+CREATE TABLE `elemento` (
+  `EleCod` int(11) NOT NULL,
+  `OpeCod` int(11) NOT NULL,
+  `EleNom` varchar(50) DEFAULT NULL,
+  `EleRit` double DEFAULT NULL,
+  `EleInt` double DEFAULT NULL,
+  `EleCon` double DEFAULT NULL,
+  `EleQtdVez` int(11) DEFAULT NULL,
+  `ElePorPçs` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `elemento`
+--
+
+INSERT INTO `elemento` (`EleCod`, `OpeCod`, `EleNom`, `EleRit`, `EleInt`, `EleCon`, `EleQtdVez`, `ElePorPçs`) VALUES
+(1, 1, 'Elemento 1', 1, 1, 1, 1, 1),
+(2, 1, 'Elemento 2', 1, 1, 1, 1, 1),
+(3, 1, 'Elemento 3', 1, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `operacao`
+--
+
+CREATE TABLE `operacao` (
+  `OpeCod` int(11) NOT NULL,
+ 
+  `OpeNom` varchar(50) NOT NULL,
+  `OpeMaq` varchar(50) DEFAULT NULL,
+ 
+  `OpeCro` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `operacao`
+--
+
+INSERT INTO `operacao` (`OpeCod`, `ProCod`, `OpeNom`, `OpeMaq`, `OpeTipEst`, `OpeCro`) VALUES
+(1, 1, 'operação 1', 'maquina', 'sistema', 'cronometrista');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `ProCod` int(11) NOT NULL,
+  `ProNom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`ProCod`, `ProNom`) VALUES
+(1, 'Produto Teste juuji'),
+(2, 'Produto Teste 111'),
+(3, 'Produto Novo'),
+(4, 'produto 1'),
+(5, 'produto 2');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tomada_tempo`
+--
+
+CREATE TABLE `tomada_tempo` (
+  `TomCod` int(11) NOT NULL,
+  `OpeCod` int(11) NOT NULL,
+  `TomDat` datetime DEFAULT NULL,
+  `TomHor` time DEFAULT NULL,
+  `TomNumLei` int(11) DEFAULT NULL,
+  `TomTur` varchar(15) DEFAULT NULL,
+  `TomOpe` varchar(50) DEFAULT NULL,
+  `TomObs` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tomada_tempo`
+--
+
+INSERT INTO `tomada_tempo` (`TomCod`, `OpeCod`, `TomDat`, `TomHor`, `TomNumLei`, `TomTur`, `TomOpe`, `TomObs`) VALUES
+(1, 1, '2019-12-02 00:00:00', '19:28:00', 5, '1', 'operador', 'obs');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `UsuCod` int(11) NOT NULL,
+  `UsuNom` varchar(45) NOT NULL,
+  `UsuSen` varchar(12) NOT NULL,
+  `UsuName` varchar(80) NOT NULL,
+   `UsuTip` varchar(1) NOT NULL
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `cronometragem`
+--
+ALTER TABLE `cronometragem`
+  ADD PRIMARY KEY (`CroNroLei`,`TomCod`,`EleCod`),
+  ADD KEY `fk_Cronometragem_Tomada_Tempo1` (`TomCod`),
+  ADD KEY `fk_Cronometragem_Elemento1` (`EleCod`);
+
+--
+-- Índices para tabela `elemento`
+--
+ALTER TABLE `elemento`
+  ADD PRIMARY KEY (`EleCod`),
+  ADD KEY `fk_Elemento_Operação1` (`OpeCod`);
+
+--
+-- Índices para tabela `operacao`
+--
+ALTER TABLE `operacao`
+  ADD PRIMARY KEY (`OpeCod`),
+  ADD KEY `fk_Operação_Produto` (`ProCod`);
+
+--
+-- Índices para tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`ProCod`);
+
+--
+-- Índices para tabela `tomada_tempo`
+--
+ALTER TABLE `tomada_tempo`
+  ADD PRIMARY KEY (`TomCod`),
+  ADD KEY `fk_Tomada_Tempo_Operação1` (`OpeCod`);
+
+--
+-- Índices para tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`UsuCod`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `elemento`
+--
+ALTER TABLE `elemento`
+  MODIFY `EleCod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `operacao`
+--
+ALTER TABLE `operacao`
+  MODIFY `OpeCod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `produto`
+--
+ALTER TABLE `produto`
+  MODIFY `ProCod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `tomada_tempo`
+--
+ALTER TABLE `tomada_tempo`
+  MODIFY `TomCod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `UsuCod` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `cronometragem`
+--
+ALTER TABLE `cronometragem`
+  ADD CONSTRAINT `fk_Cronometragem_Elemento1` FOREIGN KEY (`EleCod`) REFERENCES `elemento` (`EleCod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Cronometragem_Tomada_Tempo1` FOREIGN KEY (`TomCod`) REFERENCES `tomada_tempo` (`TomCod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `elemento`
+--
+ALTER TABLE `elemento`
+  ADD CONSTRAINT `fk_Elemento_Operação1` FOREIGN KEY (`OpeCod`) REFERENCES `operacao` (`OpeCod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `operacao`
+--
+ALTER TABLE `operacao`
+  ADD CONSTRAINT `fk_Operação_Produto` FOREIGN KEY (`ProCod`) REFERENCES `produto` (`ProCod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `tomada_tempo`
+--
+ALTER TABLE `tomada_tempo`
+  ADD CONSTRAINT `fk_Tomada_Tempo_Operação1` FOREIGN KEY (`OpeCod`) REFERENCES `operacao` (`OpeCod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

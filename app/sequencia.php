@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class sequencia extends Model
 {
      public $timestamps = false;
-     protected $table='sequencia';
-     protected $primaryKey='SeqCod';
+     protected $table='elemento';
+     protected $primaryKey='OpeCod';
 }

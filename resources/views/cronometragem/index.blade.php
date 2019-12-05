@@ -63,42 +63,13 @@
         
     </table>
         
-    </body>
-        <br><br>
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="panel">
-
-                    <table class="table table-striped table-advance table-hover">
-                        <tbody>
-
-                            <tr>
-                                <th><i class="icon_pin"></i> Cod.</th>
-                                <th><i class="icon_tool"></i> Cronometristra</th>
-                                <th><i class="icon_cogs"></i> Tempo</th>
-                                 <th><i class="icon_cogs"></i> TomadaTempo</th>
-                                  <th><i class="icon_cogs"></i> Produto</th>
-                                   <th><i class="icon_cogs"></i> Operação</th>
-                            </tr>
-                            @foreach($cronometragem as $c)
-                            <tr id="linhadel{{$c->CroCod}}">
-                                 <td>{{$c->CroCod}}</td>  
-                                <td>{{$c->CroCronNom}}</td>  
-                                 <td>{{$c->TomCod}}</td>  
-                                  <td>{{$c->Tomada_Tempo_OpCod}}</td> 
-                                  <td>{{$c->ProCod}}</td> 
-                                  <td>{{$c->OpCod}}</td> 
-                            
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+    
+                  
                 </section>
-            </div>
-        </div>
+           
+       
         <!-- page end-->
     </section>
-</section>
 <!--main content end-->
 
 @stop

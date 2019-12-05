@@ -97,7 +97,7 @@ function capturarTempo() {
 
     linha = "<tr>\n\
       <td>" + contador + "</td>\n\
-      <td>" + elemento.SeqNom + "</td>\n\
+      <td>" + elemento.EleNom + "</td>\n\
       <td>" + tempoCapturado + "</td>\n\
       </tr>";
 
@@ -107,7 +107,7 @@ function capturarTempo() {
     //Envia via AJAX
 
     console.log("Cronometro " + contador + " tempo: " + tempoCapturado);
-    registrarTempo(contador, tomadaTempo.TomCod, elemento.SeqCod, tempoCapturado)
+    registrarTempo(contador, tomadaTempo.TomCod, elemento.EleCod, tempoCapturado);
     contadorElemento++;
 
     //para cronometro
@@ -122,14 +122,14 @@ function registrarTempo(NumLeitura, CodTomada, CodElemento, Tempo) {
 
     $.ajax({
         method: 'get',
-        data: 'TomNumLei=' + NumLeitura + '&TomCod=' + CodTomada + '&TomEle=' + CodElemento + '&CroTem=' + Tempo,
         url: '/cronometragem/guardar',
+        data: 'CroNroLei=' + NumLeitura + '&TomCod=' + CodTomada + '&EleCod=' + CodElemento + '&CroTem=' + Tempo,
         dataType: 'json',
         success: function (data) {
             console.log('deu certo isso-> ' + NumLeitura);
         },
         error: function (argument) {
-            alert('erro ');
+            alert('errooooo ');
         }
     });
 
@@ -148,7 +148,7 @@ function getTomadaTempo(codTomadaTempo)
             tomadaTempo = data;
         },
         error: function (argument) {
-            alert('erro ');
+            alert('erru ');
         }
     });
 }
@@ -165,7 +165,7 @@ function getElementos(codOperacao)
             elementos = data;
         },
         error: function (argument) {
-            alert('erro ');
+            alert('errrrrrrr ');
         }
     });
 }
